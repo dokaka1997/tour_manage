@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="lib1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/build/web/WEB-INF/lib/sqljdbc4-2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/web/WEB-INF/lib/jstl-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/web/WEB-INF/lib/mysql-connector-java-8.0.22.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/web/WEB-INF/lib/jstl-impl.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
