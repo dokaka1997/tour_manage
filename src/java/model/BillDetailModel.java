@@ -9,13 +9,15 @@ package model;
  *
  * @author Dao Van Do
  */
-public class BillModel {
+public class BillDetailModel {
 
     private int id;
-    private String month;
-    private String money;
+    private String name;
     private String code;
-    private String status;
+    private int money;
+    private String date;
+    private int amount;
+    private int bill;
     private int idPartner;
     private String stk;
 
@@ -35,20 +37,20 @@ public class BillModel {
         this.id = id;
     }
 
-    public String getMonth() {
-        return month;
+    public String getName() {
+        return name;
     }
 
-    public void setMonth(String month) {
-        this.month = month;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getMoney() {
-        return money;
+    public int getBill() {
+        return bill;
     }
 
-    public void setMoney(String money) {
-        this.money = money;
+    public void setBill(int bill) {
+        this.bill = bill;
     }
 
     public String getCode() {
@@ -59,12 +61,28 @@ public class BillModel {
         this.code = code;
     }
 
-    public String getStatus() {
-        return status;
+    public int getMoney() {
+        return money;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     public int getIdPartner() {

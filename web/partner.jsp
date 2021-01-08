@@ -16,6 +16,11 @@
     <body>
         <div style="text-align: center">
             <label>Danh sách đối tác</label>
+            <form action="FindPartnerController">
+                <label for="name">Tên đối tác</label>
+                <input type="text" id="name" name="name">
+                <input type="submit" value="Submit">
+            </form>
 
             <div>
                 <table>
@@ -23,12 +28,14 @@
                         <th>Họ và tên</th>
                         <th>Mã đối tác</th>
                         <th>Hóa đơn thanh toán</th>
+                        <th>Trạng thái</th>
                     </tr>
                     <c:forEach var="item" items="${partners}">
                         <tr>
                             <td>${item.name}</td>
                             <td>${item.code}</td>
                             <td>${item.mail}</td>
+                            <td>${item.status}</td>
                             <td>
                                 <button><a href="BillController?idPartner=${item.id}">Xem</a></button>
                             </td>

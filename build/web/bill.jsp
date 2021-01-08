@@ -30,7 +30,7 @@
                             <td>${item.money}</td>
                             <td>${item.status}</td>
                             <td>
-                                <button><a href="PaymentController?id=${item.id}">Thanh Toán</a></button>
+                                <button><a href="BillDetailController?idPartner=${item.idPartner}">Xem chi tiết</a></button>
                             </td>
                         </tr>
                     </c:forEach>

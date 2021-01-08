@@ -21,11 +21,45 @@ public class PartnerService {
 
     public List<Partner> getAllPartner() {
         List<Partner> partners = new ArrayList<>();
-        int type = 0;
         try {
             DBConnect dbContext = new DBConnect();
             connection = DBConnect.getConnection();
-            String sql = "select * from demo.Partner";
+            String sql = "SELECT T1.id, T1.name, T1.code, T1.mail, T1.stk, T2.status\n"
+                    + "FROM demo.Partner AS T1\n"
+                    + "JOIN demo.Bill AS T2\n"
+                    + "ON T1.id = T2.idPartner =1";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                Partner partner = new Partner();
+                partner.setId(rs.getString("id"));
+                partner.setName(rs.getString("name"));
+                partner.setMail(rs.getString("mail"));
+                partner.setCode(rs.getString("code"));
+                partner.setStatus(rs.getString("status"));
+                partner.setStk(rs.getString("stk"));
+                partners.add(partner);
+            }
+
+        } catch (Exception e) {
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                }
+            }
+        }
+        return partners;
+    }
+
+    public List<Partner> getPartnerByName(String name) {
+        List<Partner> partners = new ArrayList<>();
+        try {
+            DBConnect dbContext = new DBConnect();
+            connection = DBConnect.getConnection();
+            String sql = "select * from demo.Partner where name like '%" + name + "%' ";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
 
@@ -49,5 +83,4 @@ public class PartnerService {
         }
         return partners;
     }
-
 }

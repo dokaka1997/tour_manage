@@ -7,17 +7,21 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import service.PaymentService;
+import model.BillDetailModel;
+import model.BillModel;
+import service.BillDetailService;
+import service.BillService;
 
 /**
  *
  * @author Dao Van Do
  */
-public class PaymentController extends HttpServlet {
+public class BillDetailController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,11 +35,18 @@ public class PaymentController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        int sum = 0;
         int id = Integer.parseInt(request.getParameter("idPartner"));
-        PaymentService paymentService = new PaymentService();
-        
-        paymentService.updateStatusBill(id);
-       request.getRequestDispatcher("PartnerController").forward(request, response);
+        BillDetailService billService = new BillDetailService();
+        List<BillDetailModel> billDetail = billService.getBillDetail(id);
+        for (BillDetailModel bdm : billDetail) {
+            sum += (bdm.getAmount() * bdm.getMoney());
+        }
+        request.setAttribute("stk", billDetail.get(0).getStk());
+        request.setAttribute("sum", sum);
+        request.setAttribute("billDetail", billDetail);
+        request.setAttribute("idBill", billDetail.get(0).getBill());
+        request.getRequestDispatcher("billDetail.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

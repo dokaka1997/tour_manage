@@ -25,11 +25,10 @@ public class BillService {
 
     public List<BillModel> getAllBills(int idPartner) {
         List<BillModel> bills = new ArrayList<>();
-        int type = 0;
         try {
             DBConnect dbContext = new DBConnect();
             connection = DBConnect.getConnection();
-            String sql = "select * from demo.Bill where idPartner = ?";
+            String sql = "select * from demo.Bill where idPartner = ? order by month desc";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, idPartner);
             ResultSet rs = statement.executeQuery();

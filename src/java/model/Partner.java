@@ -15,13 +15,34 @@ public class Partner {
     private String name;
     private String code;
     private String mail;
+    private String status;
+    private String stk;
+           
 
-    public Partner(String id, String name, String code, String mail) {
+    public Partner(String id, String name, String status) {
         this.id = id;
         this.name = name;
-        this.code = code;
-        this.mail = mail;
+        this.status = status;
     }
+
+    public String getStk() {
+        return stk;
+    }
+
+    public void setStk(String stk) {
+        this.stk = stk;
+    }
+    
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+
 
     public Partner() {
     }
@@ -57,7 +78,5 @@ public class Partner {
     public void setMail(String mail) {
         this.mail = mail;
     }
-    
-    
 
 }
