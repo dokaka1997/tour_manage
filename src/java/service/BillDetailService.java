@@ -27,13 +27,13 @@ public class BillDetailService {
         List<BillDetailModel> bills = new ArrayList<>();
         int type = 0;
         try {
-            DBConnect dbContext = new DBConnect();
+                DBConnect dbContext = new DBConnect();
             connection = DBConnect.getConnection();
             String sql = "SELECT T1.id, T1.name, T1.code, T1.startDate, T1.amount, T1.money, T1.idBill, T1.idPartner, T2.stk\n"
                     + "FROM demo.Partner AS T2\n"
                     + "JOIN demo.BillDetail AS T1\n"
                     + "ON T2.id = T1.idPartner\n"
-                    + "where T1.idPartner = ?";
+                    + "where T1.id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, idPartner);
             ResultSet rs = statement.executeQuery();

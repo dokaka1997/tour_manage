@@ -45,7 +45,7 @@ public class BillDetailController extends HttpServlet {
         request.setAttribute("stk", billDetail.get(0).getStk());
         request.setAttribute("sum", sum);
         request.setAttribute("billDetail", billDetail);
-        request.setAttribute("idBill", billDetail.get(0).getBill());
+        request.setAttribute("idBill", billDetail.get(0).getId());
         request.getRequestDispatcher("billDetail.jsp").forward(request, response);
     }
 

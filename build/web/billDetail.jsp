@@ -37,15 +37,15 @@
                     </c:forEach>
                 </table>
                 <label>Tổng tiền: ${sum}  </label><br>
-                <button onclick="myFunction()">Thanh Toán</button>
+                <button onclick="myFunction(${idBill})">Thanh Toán</button>
                 <!--<button><a href="PaymentController?id=${idBill}">Thanh Toán</a></button>-->
             </div>
         </div>
         <script>
-            function myFunction() {
+            function myFunction(id) {
                 var answer = window.confirm("Xác nhận thanh toán tới stk ${stk} với số tiền là ${sum} ");
                 if (answer) {
-                    location.href = "PaymentController?idPartner=${idBill}";
+                    location.href = "PaymentController?idPartner=" + id;
                 }
                 else {
                     //some code

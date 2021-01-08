@@ -27,7 +27,7 @@ public class PartnerService {
             String sql = "SELECT T1.id, T1.name, T1.code, T1.mail, T1.stk, T2.status\n"
                     + "FROM demo.Partner AS T1\n"
                     + "JOIN demo.Bill AS T2\n"
-                    + "ON T1.id = T2.idPartner =1";
+                    + "ON T1.id = T2.idPartner";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
 
