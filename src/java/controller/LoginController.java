@@ -32,8 +32,11 @@ public class LoginController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        if (username.endsWith("admin") && password.endsWith("admin")) {
+        if (username.equals("admin") && password.equals("admin")) {
             request.getRequestDispatcher("index.jsp").forward(request, response);
+        } else {
+            request.setAttribute("message", "Username or password incorrect");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
 

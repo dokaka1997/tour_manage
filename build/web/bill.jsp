@@ -28,13 +28,21 @@
                             <td>${item.month}</td>
                             <td>${item.code}</td>
                             <td>${item.money}</td>
-                            <td>${item.status}</td>
+                            <c:choose>
+                                <c:when test="${item.status == '1'}">
+                                    <td>Da thanh toan</td>
+                                </c:when>
+                                <c:when test="${item.status == '2'}">
+                                    <td>Chua thanh toan</td>
+                                </c:when>
+                            </c:choose>
                             <td>
-                                <button><a href="BillDetailController?idPartner=${item.id}">Xem chi tiết</a></button>
+                                <button><a href="BillDetailController?idPartner=${item.id}&status=${item.status}">Xem chi tiết</a></button>
                             </td>
                         </tr>
                     </c:forEach>
                 </table>
+                <button><a href="index.jsp">Home</a></button>
             </div>
         </div>
     </body>

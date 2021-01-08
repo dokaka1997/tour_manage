@@ -6,21 +6,14 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.BillDetailModel;
-import model.BillModel;
 import service.BillDetailService;
-import service.BillService;
 
-/**
- *
- * @author Dao Van Do
- */
 public class BillDetailController extends HttpServlet {
 
     /**
@@ -37,6 +30,13 @@ public class BillDetailController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         int sum = 0;
         int id = Integer.parseInt(request.getParameter("idPartner"));
+        String status = request.getParameter("status");
+        if (status.endsWith("1")) {
+            request.setAttribute("status", "1");
+        } else {
+            request.setAttribute("status", "2");
+        }
+
         BillDetailService billService = new BillDetailService();
         List<BillDetailModel> billDetail = billService.getBillDetail(id);
         for (BillDetailModel bdm : billDetail) {

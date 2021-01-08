@@ -35,7 +35,14 @@
                             <td>${item.name}</td>
                             <td>${item.code}</td>
                             <td>${item.mail}</td>
-                            <td>${item.status}</td>
+                            <c:choose>
+                                <c:when test="${item.status == '1'}">
+                                    <td>Da thanh toan</td>
+                                </c:when>
+                                <c:when test="${item.status == '2'}">
+                                    <td>Chua thanh toan</td>
+                                </c:when>
+                            </c:choose>
                             <td>
                                 <button><a href="BillController?idPartner=${item.id}">Xem</a></button>
                             </td>

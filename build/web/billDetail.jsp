@@ -37,7 +37,16 @@
                     </c:forEach>
                 </table>
                 <label>Tổng tiền: ${sum}  </label><br>
-                <button onclick="myFunction(${idBill})">Thanh Toán</button>
+                <c:choose>
+                    <c:when test="${status == '1'}">
+                        <td>Da thanh toan</td>
+                    </c:when>
+                    <c:when test="${status == '2'}">
+                        <button onclick="myFunction(${idBill})">Thanh Toán</button>
+
+                    </c:when>
+                </c:choose>
+                <button><a href="index.jsp">Home</a></button>
                 <!--<button><a href="PaymentController?id=${idBill}">Thanh Toán</a></button>-->
             </div>
         </div>
